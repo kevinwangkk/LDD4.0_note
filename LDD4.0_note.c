@@ -89,6 +89,19 @@ linux内核由5个子系统组成
 1. SMP (多核)
 
 2. 中断屏蔽
+	local_irq_disable()       /*  屏蔽中断  */
+	. . .
+	critical section          /*  临界区 */
+	. . .
+	local_irq_enable()        /*  开中断 */
+单独使用中断屏蔽通常不是一种值得推荐的避免竞态的方法
+（换句话说，驱动中使用local_irq_disable/enable（）通常意味着一个bug）
+
+		与local_irq_disable（）不同的是，local_irq_save（flags）除了进行禁止中断的操作以外，还保存目前
+		CPU的中断位信息，local_irq_restore（flags）进行的是与local_irq_save（flags）相反的操作。对于ARM
+		处
+		理器而言，其实就是保存和恢复CPSR。
+
 
 /*****************************************************/
 

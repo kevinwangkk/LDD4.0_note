@@ -99,8 +99,7 @@ linux内核由5个子系统组成
 
 		与local_irq_disable（）不同的是，local_irq_save（flags）除了进行禁止中断的操作以外，还保存目前
 		CPU的中断位信息，local_irq_restore（flags）进行的是与local_irq_save（flags）相反的操作。对于ARM
-		处
-		理器而言，其实就是保存和恢复CPSR。
+		处理器而言，其实就是保存和恢复CPSR。
 
 
 /*****************************************************/
